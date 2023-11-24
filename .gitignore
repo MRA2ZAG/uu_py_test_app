@@ -1,0 +1,22 @@
+# Environments
+.venv*
+
+# Distribution / packaging
+*.egg-info/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+
+# notebook
+.ipynb_checkpoints*
+
+# local configuration files
+local.ini
+
+# ide
+**/.vscode/**
+
+# test files
+.coverage
+test-reports
+htmlcov
