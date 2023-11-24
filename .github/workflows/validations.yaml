@@ -7,6 +7,6 @@ jobs:
     steps:
       - name: print run information
         run: |
-          echo "Run Information:"
+          echo "$(date +"%Y-%m-%dT%H:%M:%S%z") Run Information:"
           echo "  repository: ${{ github.repository }}, branch: ${{ github.ref }}, trigger event: ${{ github.event_name }}."
-          echo "  runner os: ${{ runner.os }}"
+          echo "  python version: $(python --version)"
