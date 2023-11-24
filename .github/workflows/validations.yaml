@@ -22,3 +22,6 @@ jobs:
           pytest
           deactivate
           rm -rf venv
+      - name : debug
+        run: |
+          tree .
