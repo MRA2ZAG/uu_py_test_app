@@ -26,9 +26,11 @@ jobs:
           pytest
           deactivate
       - name : build artifact
+        if: always()
         run: |
           zip -r validations.zip htmlcov test-reports
       - uses: actions/upload-artifact@v3
+        if: success()
         with:
           name: validations
           path: validations.zip
