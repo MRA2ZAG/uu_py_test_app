@@ -5,14 +5,23 @@ jobs:
   github-py_project-validations:
     runs-on: ubuntu-latest
     steps:
-      - name: print run information
-        run: |
-          echo "$(date +"%Y-%m-%dT%H:%M:%S%z") Run Information:"
-          echo "  repository: ${{ github.repository }}, branch: ${{ github.ref }}, trigger event: ${{ github.event_name }}."
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v4
         with:
           python-version: '${{ vars.TARGET_PYTHON_VERSION }}'
-      - name: validate python version
+      - name: print run information
         run: |
+          echo "$(date +"%Y-%m-%dT%H:%M:%S%z") Run Information:"
+          echo "  repository: ${{ github.repository }}, branch: ${{ github.ref }}, trigger event: ${{ github.event_name }}."
           echo "  python version: $(python --version)"
+      - name: set up project
+        runs: |
+          python3 -m venv venv
+          source venv/bin/activate
+          pip install -e .[dev]
+      - name: run test
+        runs: pytest
+      - name: clean up
+        runs: |
+          deactivate
+          rm -rf venv
