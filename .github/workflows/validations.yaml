@@ -14,14 +14,21 @@ jobs:
           echo "$(date +"%Y-%m-%dT%H:%M:%S%z") Run Information:"
           echo "  repository: ${{ github.repository }}, branch: ${{ github.ref }}, trigger event: ${{ github.event_name }}."
           echo "  python version: $(python --version)"
-      - name: run tests
+      - name: setup env
         run: |
           python3 -m venv venv
           source venv/bin/activate
           pip install -e .[dev]
+          deactivate
+      - name: run tests
+        run: |
+          source venv/bin/activate
           pytest
           deactivate
-          rm -rf venv
-      - name : debug
+      - name : build artifact
         run: |
-          tree .
+          zip -r validations.zip htmlcov test-repors
+      - uses: actions/upload-artifact@v3
+        with:
+          name: validations
+          path: validations.zip
