@@ -1,0 +1,12 @@
+name: uu_py_test_app - run validations
+run-name: ${{ github.actor }} - uu_py_test_app - run validations
+on: [push]
+jobs:
+  Validate python code:
+    runs-on: ubuntu-latest
+    steps:
+      - name: print run information
+        run: |
+          echo "Run Information:"
+          echo "  repository: ${{ github.repository }}, branch: ${{ github.ref }}, trigger event: ${{ github.event_name }}."
+          echo "  runner os: ${{ runner.os }}"
