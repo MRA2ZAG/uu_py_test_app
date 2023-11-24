@@ -25,12 +25,10 @@ jobs:
           source venv/bin/activate
           pytest
           deactivate
-      - name : build artifact
-        if: always()
-        run: |
-          zip -r validations.zip htmlcov test-reports
       - uses: actions/upload-artifact@v3
-        if: success()
+        if: always()
         with:
           name: validations
-          path: validations.zip
+          path: |
+            htmlcov
+            test-reports
