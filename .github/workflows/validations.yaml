@@ -27,7 +27,7 @@ jobs:
           deactivate
       - name : build artifact
         run: |
-          zip -r validations.zip htmlcov test-repors
+          zip -r validations.zip htmlcov test-reports
       - uses: actions/upload-artifact@v3
         with:
           name: validations
