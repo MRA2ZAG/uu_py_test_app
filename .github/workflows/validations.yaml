@@ -15,7 +15,7 @@ jobs:
           echo "  repository: ${{ github.repository }}, branch: ${{ github.ref }}, trigger event: ${{ github.event_name }}."
           echo "  python version: $(python --version)"
       - name: set up project
-        runs: |
+        run: |
           python3 -m venv venv
           source venv/bin/activate
           pip install -e .[dev]
