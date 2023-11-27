@@ -1,6 +1,6 @@
 name: uu_py_test_app - run validations
 run-name: ${{ github.actor }} - uu_py_test_app - run validations
-on
+on:
   push:
     branches:
       - 'feature/**'
