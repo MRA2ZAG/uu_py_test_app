@@ -1,7 +1,7 @@
 name: uu_py_test_app - create python package
 run-name: ${{ github.actor }} - uu_py_test_app - create python package
 on:
-  push:
+  pull_request:
     branches:
       - main
       - 'releases/**'
