@@ -21,4 +21,5 @@ class Test__App_main(TestCase) :
 class Test__Fail(TestCase) :
     
     def test_failure(self):
+        # test pr restriction
         self.fail(msg="forced failure")
