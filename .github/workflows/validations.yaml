@@ -1,6 +1,8 @@
 name: uu_py_test_app - run validations
 run-name: ${{ github.actor }} - uu_py_test_app - run validations
-on: [push]
+  push:
+    branches:
+      - 'feature/**'
 jobs:
   github-py_project-validations:
     runs-on: ubuntu-latest
