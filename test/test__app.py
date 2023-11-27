@@ -18,7 +18,8 @@ class Test__App_main(TestCase) :
     def test_main_err(self):
         self.assertEqual(main(*["-f"]),1)
 
-class Test__Fail(TestCase) :
-    
-    def test_failure(self):
-        self.fail(msg="forced failure")
+#class Test__Fail(TestCase) :
+#    
+#    def test_failure(self):
+#        # test pr restriction
+#        self.fail(msg="forced failure")
