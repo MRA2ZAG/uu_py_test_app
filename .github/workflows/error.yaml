@@ -1,0 +1,13 @@
+name: uu_py_test_app - raise error
+run-name: ${{ github.actor }} - uu_py_test_app - raise error
+on: [push]
+jobs:
+  github-py_project-raise_error:
+    runs-on: ubuntu-latest
+    steps:
+      - name: print run information and fail
+        run: |
+          echo "$(date +"%Y-%m-%dT%H:%M:%S%z") Run Information:"
+          echo "  repository: ${{ github.repository }}, branch: ${{ github.ref }}, trigger event: ${{ github.event_name }}."
+          echo "  python version: $(python --version)"
+          exit 1
