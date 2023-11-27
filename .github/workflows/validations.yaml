@@ -1,0 +1,34 @@
+name: uu_py_test_app - run validations
+run-name: ${{ github.actor }} - uu_py_test_app - run validations
+on: [push]
+jobs:
+  github-py_project-validations:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '${{ vars.TARGET_PYTHON_VERSION }}'
+      - name: print run information
+        run: |
+          echo "$(date +"%Y-%m-%dT%H:%M:%S%z") Run Information:"
+          echo "  repository: ${{ github.repository }}, branch: ${{ github.ref }}, trigger event: ${{ github.event_name }}."
+          echo "  python version: $(python --version)"
+      - name: setup env
+        run: |
+          python3 -m venv venv
+          source venv/bin/activate
+          pip install -e .[dev]
+          deactivate
+      - name: run tests
+        run: |
+          source venv/bin/activate
+          pytest
+          deactivate
+      - uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: validations
+          path: |
+            htmlcov
+            test-reports
