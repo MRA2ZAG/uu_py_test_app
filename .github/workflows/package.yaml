@@ -1,0 +1,16 @@
+name: uu_py_test_app - create python package
+run-name: ${{ github.actor }} - uu_py_test_app - create python package
+on:
+  push:
+    branches:
+      - main
+      - 'releases/**'
+jobs:
+  github-py_project-package:
+    runs-on: ubuntu-latest
+    steps:
+      - name: print run information
+        run: |
+          echo "$(date +"%Y-%m-%dT%H:%M:%S%z") Run Information:"
+          echo "  repository: ${{ github.repository }}, branch: ${{ github.ref }}, trigger event: ${{ github.event_name }}."
+          echo "  python version: $(python --version)"
